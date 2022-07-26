@@ -11,6 +11,7 @@ def launchLeagueClient():
     except Exception:
         printError("Can't launch League. Check if you provided correct league location in config.py")
         printError("Change it and relaunch main.py")
+
 def loginInto():
      time.sleep(3)
      keyboard.write("")
@@ -20,8 +21,6 @@ def loginInto():
      keyboard.press_and_release('enter')
      time.sleep(20)
      
-
-
 def loginFirstTime():
     loginInto()
     time.sleep(20)

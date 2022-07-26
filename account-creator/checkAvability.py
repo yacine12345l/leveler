@@ -1,8 +1,12 @@
 import imp
+
+
 logger = imp.load_source('logger', '.\logger.py')
 import requests
 from requests.structures import CaseInsensitiveDict
 from time import time, sleep
+import os
+import sys
 
 def checkNickAvability(server,nickname):
     sleep(2)
@@ -36,3 +40,13 @@ def checkNickAvability(server,nickname):
         else:
             logger.printWarning(nickname +" is probably available. Might be permabanned as well.")
             return 2 #nick was used in past, might be permabanned, cuz riot doesnt clear nicks after permas
+
+def checkFile(nickname):
+    file = open(os.path.join(sys.path[0], "nicksUsed.txt"),"r")
+    nicksUsed = file.read().split('\n')
+    for x in range(len(nicksUsed)):
+       if nicksUsed[x] == nickname:
+            logger.printError("Nick is used by one of your bots...")
+            return 1#nick used
+    logger.printSuccess("Nick is not used by any of your bots...")
+    return 0

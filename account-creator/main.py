@@ -16,7 +16,13 @@ utworz konto w riocie
 zapisz do bazy
 
 """
-import checkAvability
+from checkAvability import checkNickAvability, checkFile 
+from nickGenerator import generateRandomName
 
-status = checkAvability.checkNickAvability("Eune","Bubblelift")
-print(status)
+#nick = generateRandomName()
+nick = "klisiubb"
+server = "eune" #todo in selectServer
+checkFile(nick)
+status = checkNickAvability(server,nick)
+
+
