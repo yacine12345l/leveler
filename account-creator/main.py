@@ -18,11 +18,12 @@ zapisz do bazy
 """
 from checkAvability import checkNickAvability, checkFile 
 from nickGenerator import generateRandomName
-
-#nick = generateRandomName()
-nick = "klisiubb"
+from emailGenerator import createEmail
+nick = generateRandomName()
 server = "eune" #todo in selectServer
 checkFile(nick)
 status = checkNickAvability(server,nick)
 
+if status == 0:
+    createEmail(nick)
 
